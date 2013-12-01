@@ -27,6 +27,7 @@
 @property (nonatomic, retain) NSArray *packages;
 @property (nonatomic, retain) NSPredicate *filterPredicate;
 
+@property (strong) IBOutlet NSPanel *preferencesPanel;
 @property (assign) IBOutlet NSPanel *previewPanel;
 @property (assign) IBOutlet NSImageView *previewImageView;
 @property (assign) IBOutlet NSSearchField *searchField;
@@ -42,6 +43,9 @@
 - (IBAction)displayScreenshotPressed:(NSButton *)sender;
 
 - (IBAction)segmentedControlPressed:(id)sender;
+
+- (IBAction)openPreferencesPressed:(NSButton *)sender;
+- (IBAction)savePreferencesPressed:(NSButton *)sender;
 
 - (void)reloadPackages;
 

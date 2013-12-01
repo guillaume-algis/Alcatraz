@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A2093" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="4514" systemVersion="13A603" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <deployment version="1080" defaultVersion="1080" identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="4514"/>
@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ATZPluginWindowController">
             <connections>
+                <outlet property="preferencesPanel" destination="gUh-6t-n0G" id="LWA-qJ-kOB"/>
                 <outlet property="previewImageView" destination="1349" id="1365"/>
                 <outlet property="previewPanel" destination="1347" id="1364"/>
                 <outlet property="progressIndicator" destination="604" id="608"/>
@@ -23,20 +24,20 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" texturedBackground="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="200" y="250" width="500" height="618"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="126">
                 <rect key="frame" x="0.0" y="0.0" width="500" height="618"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView ambiguous="YES" misplaced="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23">
-                        <rect key="frame" x="0.0" y="20" width="500" height="560"/>
+                    <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="23">
+                        <rect key="frame" x="0.0" y="20" width="500" height="598"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <clipView key="contentView" ambiguous="YES" misplaced="YES" copiesOnScroll="NO" id="2OX-MH-qJ4">
-                            <rect key="frame" x="0.0" y="0.0" width="500" height="560"/>
+                        <clipView key="contentView" copiesOnScroll="NO" id="2OX-MH-qJ4">
+                            <rect key="frame" x="0.0" y="0.0" width="500" height="598"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" selectionHighlightStyle="sourceList" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="24">
-                                    <rect key="frame" x="0.0" y="0.0" width="500" height="560"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="500" height="598"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <size key="intercellSpacing" width="3" height="2"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -222,21 +223,6 @@
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
-                    <searchField verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8my-Ez-NU4">
-                        <rect key="frame" x="346" y="588" width="139" height="22"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="139" id="K7n-Sn-iut"/>
-                        </constraints>
-                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="KA8-aL-Obt">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                        </searchFieldCell>
-                        <connections>
-                            <outlet property="delegate" destination="-2" id="MtT-UQ-xZM"/>
-                        </connections>
-                    </searchField>
                     <customView focusRingType="none" translatesAutoresizingMaskIntoConstraints="NO" id="500" userLabel="Bottom Bar" customClass="ATZStatusView">
                         <rect key="frame" x="0.0" y="0.0" width="500" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
@@ -274,6 +260,21 @@
                                     <constraint firstAttribute="width" constant="31" id="612"/>
                                 </constraints>
                             </progressIndicator>
+                            <button translatesAutoresizingMaskIntoConstraints="NO" id="7dR-jH-vq7">
+                                <rect key="frame" x="480" y="0.0" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="20" id="A1m-jR-wMU"/>
+                                    <constraint firstAttribute="width" constant="20" id="E2V-X3-Goc"/>
+                                </constraints>
+                                <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="preferences" imagePosition="only" alignment="left" inset="2" id="IQP-BA-MXa">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="openPreferencesPressed:" target="-2" id="Iku-S0-AFs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="510"/>
@@ -285,30 +286,12 @@
                             <constraint firstAttribute="trailing" secondItem="676" secondAttribute="trailing" constant="22" id="727"/>
                             <constraint firstItem="676" firstAttribute="leading" secondItem="521" secondAttribute="trailing" priority="198" constant="108" id="734"/>
                             <constraint firstItem="521" firstAttribute="bottom" secondItem="676" secondAttribute="bottom" id="741"/>
+                            <constraint firstAttribute="trailing" secondItem="7dR-jH-vq7" secondAttribute="trailing" id="Oqn-HI-pgH"/>
+                            <constraint firstItem="7dR-jH-vq7" firstAttribute="top" secondItem="500" secondAttribute="top" id="XMe-dC-MmU"/>
+                            <constraint firstAttribute="bottom" secondItem="7dR-jH-vq7" secondAttribute="bottom" id="dCD-Be-SJD"/>
+                            <constraint firstAttribute="centerY" secondItem="7dR-jH-vq7" secondAttribute="centerY" id="hrn-6j-Apa"/>
                         </constraints>
                     </customView>
-                    <segmentedControl focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1lO-z8-UW7">
-                        <rect key="frame" x="11" y="586" width="137" height="25"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <segmentedCell key="cell" focusRingType="none" alignment="left" style="texturedRounded" trackingMode="selectOne" id="vaZ-Yu-jkt" customClass="ATZSegmentedCell">
-                            <font key="font" metaFont="system"/>
-                            <segments>
-                                <segment label="All" toolTip="All Packages" width="32" selected="YES"/>
-                                <segment toolTip="Plugins" image="toolbar_plugins" width="32">
-                                    <nil key="label"/>
-                                </segment>
-                                <segment toolTip="Colorschemes" image="toolbar_colors" width="32">
-                                    <nil key="label"/>
-                                </segment>
-                                <segment toolTip="Templates" image="toolbar_templates">
-                                    <nil key="label"/>
-                                </segment>
-                            </segments>
-                        </segmentedCell>
-                        <connections>
-                            <action selector="segmentedControlPressed:" target="-2" id="Y5y-Ug-5OC"/>
-                        </connections>
-                    </segmentedControl>
                 </subviews>
                 <constraints>
                     <constraint firstItem="23" firstAttribute="leading" secondItem="126" secondAttribute="leading" id="146"/>
@@ -317,10 +300,66 @@
                     <constraint firstItem="500" firstAttribute="leading" secondItem="126" secondAttribute="leading" id="513"/>
                     <constraint firstAttribute="trailing" secondItem="500" secondAttribute="trailing" id="515"/>
                     <constraint firstItem="500" firstAttribute="top" secondItem="23" secondAttribute="bottom" id="517"/>
-                    <constraint firstItem="23" firstAttribute="top" secondItem="8my-Ez-NU4" secondAttribute="bottom" constant="8" id="H0S-Tn-qso"/>
-                    <constraint firstAttribute="trailing" secondItem="8my-Ez-NU4" secondAttribute="trailing" constant="15" id="nqn-C5-m8z"/>
+                    <constraint firstItem="23" firstAttribute="top" secondItem="126" secondAttribute="top" id="ALi-Fq-3eP"/>
                 </constraints>
             </view>
+            <toolbar key="toolbar" implicitIdentifier="750DBACF-6071-466E-94FA-97B6E8244061" autosavesConfiguration="NO" allowsUserCustomization="NO" displayMode="iconOnly" sizeMode="regular" id="CPq-Zi-dmB">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="F32D284D-F51F-4F23-A097-3D97412B3A1E" label="Custom View" paletteLabel="Custom View" id="VOw-7J-Wto">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="137" height="25"/>
+                        <size key="maxSize" width="137" height="25"/>
+                        <segmentedControl key="view" focusRingType="none" verticalHuggingPriority="750" id="1lO-z8-UW7">
+                            <rect key="frame" x="0.0" y="14" width="137" height="25"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <segmentedCell key="cell" focusRingType="none" alignment="left" style="texturedRounded" trackingMode="selectOne" id="vaZ-Yu-jkt" customClass="ATZSegmentedCell">
+                                <font key="font" metaFont="system"/>
+                                <segments>
+                                    <segment label="All" toolTip="All Packages" width="32" selected="YES"/>
+                                    <segment toolTip="Plugins" image="toolbar_plugins" width="32">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Colorschemes" image="toolbar_colors" width="32">
+                                        <nil key="label"/>
+                                    </segment>
+                                    <segment toolTip="Templates" image="toolbar_templates">
+                                        <nil key="label"/>
+                                    </segment>
+                                </segments>
+                            </segmentedCell>
+                            <connections>
+                                <action selector="segmentedControlPressed:" target="-2" id="Y5y-Ug-5OC"/>
+                            </connections>
+                        </segmentedControl>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C1D07216-3DC8-40C6-A4DF-74998C72C118" label="Custom View" paletteLabel="Custom View" id="xeI-p3-FLA">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="139" height="22"/>
+                        <size key="maxSize" width="139" height="22"/>
+                        <searchField key="view" verticalHuggingPriority="750" id="8my-Ez-NU4">
+                            <rect key="frame" x="0.0" y="14" width="139" height="22"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="139" id="K7n-Sn-iut"/>
+                            </constraints>
+                            <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="KA8-aL-Obt">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </searchFieldCell>
+                            <connections>
+                                <outlet property="delegate" destination="-2" id="MtT-UQ-xZM"/>
+                            </connections>
+                        </searchField>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="MWy-am-TJU"/>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="VOw-7J-Wto"/>
+                    <toolbarItem reference="MWy-am-TJU"/>
+                    <toolbarItem reference="xeI-p3-FLA"/>
+                </defaultToolbarItems>
+            </toolbar>
         </window>
         <arrayController objectClassName="Package" editable="NO" preservesSelection="NO" selectsInsertedObjects="NO" avoidsEmptySelection="NO" id="229">
             <connections>
@@ -332,7 +371,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES" utility="YES" HUD="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="480" height="285"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1050"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
             <view key="contentView" id="1348">
                 <rect key="frame" x="0.0" y="0.0" width="480" height="285"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -350,10 +389,78 @@
                 </constraints>
             </view>
         </window>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" hidesOnDeactivate="YES" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="gUh-6t-n0G" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" utility="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="272" y="172" width="500" height="91"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1418"/>
+            <view key="contentView" id="HCk-4S-Yqf">
+                <rect key="frame" x="0.0" y="0.0" width="500" height="91"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9N5-vR-vPV">
+                        <rect key="frame" x="123" y="49" width="357" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" placeholderString="https://github.com/mneorr/alcatraz-packages" drawsBackground="YES" id="j9v-My-ffA">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ewU-9V-7KO">
+                        <rect key="frame" x="18" y="52" width="99" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Repository URL" id="Wk5-Bj-kU7">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="kq1-HP-4is">
+                        <rect key="frame" x="417" y="13" width="69" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="ZJX-hm-hkf">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="savePreferencesPressed:" target="-2" id="Ns9-yr-ts3"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="kq1-HP-4is" secondAttribute="bottom" constant="20" id="6wF-CT-dJI"/>
+                    <constraint firstItem="ewU-9V-7KO" firstAttribute="leading" secondItem="HCk-4S-Yqf" secondAttribute="leading" constant="20" symbolic="YES" id="DGG-fj-uf4"/>
+                    <constraint firstItem="ewU-9V-7KO" firstAttribute="top" secondItem="HCk-4S-Yqf" secondAttribute="top" constant="22" id="HUh-y8-Ueo"/>
+                    <constraint firstAttribute="trailing" secondItem="9N5-vR-vPV" secondAttribute="trailing" constant="20" id="bIm-g9-u3M"/>
+                    <constraint firstItem="kq1-HP-4is" firstAttribute="top" secondItem="9N5-vR-vPV" secondAttribute="bottom" constant="8" id="dxe-Z5-ebV"/>
+                    <constraint firstItem="9N5-vR-vPV" firstAttribute="leading" secondItem="ewU-9V-7KO" secondAttribute="trailing" constant="8" id="fP2-t3-OBc"/>
+                    <constraint firstItem="9N5-vR-vPV" firstAttribute="top" secondItem="HCk-4S-Yqf" secondAttribute="top" constant="20" id="k1f-c8-Q6K"/>
+                    <constraint firstAttribute="trailing" secondItem="kq1-HP-4is" secondAttribute="trailing" constant="20" id="qRU-kM-Oao"/>
+                    <constraint firstItem="9N5-vR-vPV" firstAttribute="leading" secondItem="ewU-9V-7KO" secondAttribute="trailing" constant="8" id="un9-dh-roi"/>
+                </constraints>
+            </view>
+        </window>
+        <toolbar implicitIdentifier="09D11707-F4A3-4FD5-970E-AC5832E91C2B" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="regular" id="whC-cs-voF">
+            <allowedToolbarItems>
+                <toolbarItem implicitItemIdentifier="NSToolbarShowColorsItem" id="QUo-Hh-Bmq"/>
+                <toolbarItem implicitItemIdentifier="NSToolbarShowFontsItem" id="Igk-YY-cYI"/>
+                <toolbarItem implicitItemIdentifier="NSToolbarPrintItem" id="kUS-Un-PKQ"/>
+                <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="WX4-6k-1j7"/>
+                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Moj-5f-41D"/>
+            </allowedToolbarItems>
+            <defaultToolbarItems>
+                <toolbarItem reference="QUo-Hh-Bmq"/>
+                <toolbarItem reference="Igk-YY-cYI"/>
+                <toolbarItem reference="Moj-5f-41D"/>
+                <toolbarItem reference="kUS-Un-PKQ"/>
+            </defaultToolbarItems>
+        </toolbar>
     </objects>
     <resources>
         <image name="eye_icon" width="16" height="16"/>
         <image name="link_icon" width="14" height="14"/>
+        <image name="preferences" width="10" height="10"/>
         <image name="toolbar_colors" width="16" height="16"/>
         <image name="toolbar_plugins" width="16" height="16"/>
         <image name="toolbar_templates" width="16" height="16"/>

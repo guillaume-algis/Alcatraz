@@ -104,6 +104,17 @@ static NSString *const SEARCH_AND_CLASS_PREDICATE_FORMAT = @"(name contains[cd] 
     [self updatePredicate];
 }
 
+- (IBAction)openPreferencesPressed:(NSButton *)sender {
+    [self.window beginSheet:self.preferencesPanel completionHandler:^(NSModalResponse returnCode) {
+        [self.preferencesPanel orderOut:self];
+    }];
+}
+
+- (IBAction)savePreferencesPressed:(NSButton *)sender {
+    [self.window endSheet:self.preferencesPanel];
+    // FIXME: Guillaume Algis : Save the new package repo URL
+}
+
 - (IBAction)displayScreenshotPressed:(NSButton *)sender {
     ATZPackage *package = [self.packages filteredArrayUsingPredicate:self.filterPredicate][[self.tableView rowForView:sender]];
     
